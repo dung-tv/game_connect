@@ -208,7 +208,7 @@
 				}
 			})
 			endElement = end;
-			if (typeof(startElement) !== 'undefined' && startElement != endElement) {
+			if (typeof(startElement) !== 'undefined' && (isNaN($(startElement).attr('data') * 1) != isNaN($(endElement).attr('data') * 1))) {
 				var line = new LeaderLine(startElement, endElement, {hide: false});
 				line.path = 'straight';
 				line.size = 2;
