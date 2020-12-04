@@ -221,26 +221,32 @@
 		}
 		$('#submit').off('click').on('click', function(e){
 			$result = $('#click').attr('data');
-			$result = $result.slice(0, $result.length - 1);
-			$result = $result.split(',');
-			$check = true;
-			$check = dapan.every(function(item, index){
-				$sosanh = [];
-				$sosanh.push(item.slice(0, 1));
-				$sosanh.push(item.slice(item.length - 1, item.length1));
-				return $result.some(function(item2, index2){
-					$sosanh2 = [];
-					$sosanh2.push(item2.slice(0, 1));
-					$sosanh2.push(item2.slice(item2.length - 1, item2.length1));
-					$check2 = $sosanh.length === $sosanh2.length && $sosanh.sort().every(function(value, index) { 
-						return value === $sosanh2.sort()[index]});
-					return $check2;
+			if (typeof($result) !== 'undefined') {
+				$result = $result.slice(0, $result.length - 1);
+				$result = $result.split(',');
+				$check = true;
+				$check = dapan.every(function(item, index){
+					$sosanh = [];
+					$sosanh.push(item.slice(0, 1));
+					$sosanh.push(item.slice(item.length - 1, item.length1));
+					return $result.some(function(item2, index2){
+						$sosanh2 = [];
+						$sosanh2.push(item2.slice(0, 1));
+						$sosanh2.push(item2.slice(item2.length - 1, item2.length1));
+						$check2 = $sosanh.length === $sosanh2.length && $sosanh.sort().every(function(value, index) { 
+							return value === $sosanh2.sort()[index]});
+						return $check2;
+					})
 				})
-			})
+			}else{
+				$check = false;
+			}
 			if($check){
 				$('#check_false').css('display', 'none');
+				$('#check_true').css('display', '');
 			}else{
 				$('#check_true').css('display', 'none');
+				$('#check_false').css('display', '');
 			}
 		})
 		$('#reset').off('click').on('click', function(){
