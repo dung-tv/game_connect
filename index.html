@@ -183,6 +183,9 @@
 		</div>		
 	</div>
 	<script>
+		// window.onload = function () {
+			// console.log(window.document);
+		// }
     	var cauhoi = {
 			"a": "Đánh đập, bạo hành",
 			"b": "Bắt trẻ làm việc quá sức, bóc lột sức lao động của trẻ",
@@ -255,7 +258,11 @@
 			}
 		})
 		$('#reset').off('click').on('click', function(){
-			window.location.reload(true);
+			$('#check_false').removeAttr('style');
+			$('#check_true').removeAttr('style');
+			$('svg[id*=leader-line], svg[class*=leader-line]').each(function (index, item) {
+				$(item).remove();
+			})
 		})
     </script>
 </body>
